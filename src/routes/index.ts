@@ -1,9 +1,18 @@
-import { Router } from "express"
-//controllers
-import init from "../controllers"
+import { Router, Application } from "express"
+//routes
+import routerPosts from './post.routes'
+//controller
+import init from '../controllers'
 
-const router = Router()
 
-router.get('/api/v1', init)
+function routerApi(app:Application) {
+    const router = Router()
 
-export default router
+    app.use('/api/v1', router)
+
+    router.get('/', init)
+    router.use('/posts', routerPosts)
+}
+
+
+export default routerApi
