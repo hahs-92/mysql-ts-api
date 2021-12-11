@@ -21,6 +21,7 @@ export class App {
     }
 
     private middlewares() {
+        this.app.use(express.json())
         this.app.use(morgan('dev'))
     }
 
